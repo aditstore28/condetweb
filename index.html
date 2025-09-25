@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ADITMARKET — Top-up & Item Game Cepat</title>
+  <meta name="description" content="CONDETMARKET — layanan top-up game, penjualan skin & joki. Cepat, aman, dan support via WhatsApp." />
+
+  <!-- Google Font (works when online) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0f172a; /* dark navy */
+      --bg2:#0b1220;
+      --accent1:#ff6b6b;
+      --accent2:#7c5cff;
+      --glass: rgba(255,255,255,0.06);
+      --muted: rgba(255,255,255,0.7);
+      --radius:14px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.12), transparent 10%),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(255,107,107,0.08), transparent 10%),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+      display:flex;justify-content:center;align-items:flex-start;
+    }
+
+    .container{max-width:1100px;width:100%}
+
+    a{color:inherit;text-decoration:none}
+
+    /* skip link for accessibility */
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:static;width:auto;height:auto;padding:8px;background:#000;border-radius:6px}
+
+    header{
+      display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6) inset;
+      backdrop-filter: blur(6px);
+    }
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent2),var(--accent1));
+      display:grid;place-items:center;font-weight:800;font-size:20px;box-shadow:0 6px 20px rgba(124,92,255,0.18);
+    }
+    .brand h1{margin:0;font-size:18px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 14px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+    .cta{background:linear-gradient(90deg,var(--accent2),var(--accent1));color:#081024;border:none;font-weight:700}
+
+    main{margin-top:18px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:center}
+    .hero-card{padding:28px;border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .eyebrow{font-size:12px;color:var(--muted);display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);}
+    h2{margin:12px 0 8px 0;font-size:28px}
+    p.lead{margin:0;color:rgba(255,255,255,0.8)}
+
+    /* animated tagline */
+    .tagline{font-weight:700;font-size:20px;margin-top:12px}
+    .glow{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0.03),transparent);animation:glow 3s ease-in-out infinite}
+    @keyframes glow{0%{filter:drop-shadow(0 0 6px rgba(124,92,255,0.06))}50%{filter:drop-shadow(0 0 18px rgba(255,107,107,0.12))}100%{filter:drop-shadow(0 0 6px rgba(124,92,255,0.06))}}
+
+    /* Cards */
+    .features{display:flex;gap:12px;margin-top:18px}
+    .feature{flex:1;padding:12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);min-height:92px}
+    .feature h4{margin:0 0 6px 0}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Right column - order form */
+    form.topup{display:flex;flex-direction:column;gap:12px}
+    label{font-size:13px}
+    input[type="text"],input[type="email"],select{padding:12px;border-radius:10px;border:none;background:rgba(0,0,0,0.25);color:#fff}
+    .price-preview{padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(124,92,255,0.06),rgba(255,107,107,0.03));text-align:center}
+
+    /* Pricing grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .card{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .card h3{margin:0}
+
+    /* contact & footer */
+    .contact{margin-top:18px;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);display:flex;align-items:center;justify-content:space-between}
+    .contact .links{display:flex;gap:12px;align-items:center}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:620px){
+      body{padding:12px}
+      .grid{grid-template-columns:1fr}
+    }
+
+    /* floating animated orb */
+    .orb{position:absolute;right:6%;top:8%;width:120px;height:120px;border-radius:999px;background:linear-gradient(135deg,var(--accent1),var(--accent2));opacity:0.18;filter:blur(26px);transform:translateZ(0);animation:floaty 6s ease-in-out infinite}
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+
+    /* focus styles for accessibility */
+    :focus{outline:3px solid rgba(124,92,255,0.22);outline-offset:2px}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="orb" aria-hidden="true"></div>
+
+  <div class="container" role="main" id="main">
+    <header aria-label="Header CONDETMARKET">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">CM</div>
+        <div>
+          <h1>CONDETMARKET</h1>
+          <p>Top-up cepat • Joki • Skin marketplace</p>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <a class="btn" href="#services">Layanan</a>
+        <a class="btn" href="#pricing">Harga</a>
+        <a class="btn" href="#contact">Kontak</a>
+        <a class="btn cta" href="#order">Pesan Sekarang</a>
+      </nav>
+    </header>
+
+    <main style="margin-top:18px">
+      <section class="hero">
+        <div class="hero-card" aria-labelledby="hero-heading">
+          <span class="eyebrow">Favorit Gamers</span>
+          <h2 id="hero-heading">Top-up & item game instan — CONDETMARKET</h2>
+          <p class="lead">Butuh diamond, UC, atau skin cepat? Pesan sekarang dan dapatkan konfirmasi lewat WhatsApp dalam hitungan menit.</p>
+
+          <div class="tagline">Cepat • Aman • Support 24/7 <span class="glow">Instant Delivery</span></div>
+
+          <div class="features" role="list">
+            <div class="feature" role="listitem">
+              <h4>Top-up Instan</h4>
+              <p class="small">Pulsa game, diamond, UC, BP — proses otomatis & manual.</p>
+            </div>
+            <div class="feature" role="listitem">
+              <h4>Joki Profesional</h4>
+              <p class="small">Jasa naik rank aman & terpercaya.</p>
+            </div>
+            <div class="feature" role="listitem">
+              <h4>Skin & Item</h4>
+              <p class="small">Jual-beli skin dengan sistem escrow internal.</p>
+            </div>
+          </div>
+
+          <div class="grid" id="pricing" aria-label="Pilihan paket cepat">
+            <article class="card">
+              <h3>Basic</h3>
+              <p class="small">Top-up kecil, konfirmasi cepat</p>
+              <p style="font-weight:700;font-size:18px">Rp 10.000</p>
+              <button class="btn" onclick="prefill('Basic','10000')">Pilih</button>
+            </article>
+            <article class="card">
+              <h3>Pro</h3>
+              <p class="small">Top-up menengah + prioritas</p>
+              <p style="font-weight:700;font-size:18px">Rp 50.000</p>
+              <button class="btn" onclick="prefill('Pro','50000')">Pilih</button>
+            </article>
+            <article class="card">
+              <h3>Premium</h3>
+              <p class="small">Joki & item langka</p>
+              <p style="font-weight:700;font-size:18px">Rp 150.000</p>
+              <button class="btn" onclick="prefill('Premium','150000')">Pilih</button>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Form pemesanan cepat">
+          <h3 style="margin-top:0">Order Cepat</h3>
+          <form class="topup" id="order" onsubmit="return handleOrder(event)" aria-label="Form order topup">
+            <label for="game">Nama Game</label>
+            <select id="game" required aria-required="true">
+              <option value="">-- Pilih game --</option>
+              <option>Mobile Legends</option>
+              <option>Free Fire</option>
+              <option>Genshin Impact</option>
+              <option>Valorant</option>
+            </select>
+
+            <label for="username">ID / Username</label>
+            <input id="username" type="text" placeholder="Masukkan ID pemain" required />
+
+            <label for="package">Paket</label>
+            <select id="package" aria-describedby="priceDesc" required>
+              <option value="">-- Pilih paket --</option>
+              <option value="10000">Basic — Rp 10.000</option>
+              <option value="50000">Pro — Rp 50.000</option>
+              <option value="150000">Premium — Rp 150.000</option>
+            </select>
+
+            <div id="priceDesc" class="price-preview" aria-live="polite">Total: —</div>
+
+            <label for="contact">Email (opsional)</label>
+            <input id="contact" type="email" placeholder="email@contoh.com" />
+
+            <button class="btn cta" type="submit">Pesan via WhatsApp</button>
+
+            <small class="small" style="display:block;margin-top:8px">Atau hubungi WA: <a href="https://wa.me/6289652853591?text=Halo%20CONDETMARKET" target="_blank" rel="noopener">+62 896-5285-3591</a></small>
+            <small class="small">Email: <a href="mailto:condetstore28@gmail.com">condetstore28@gmail.com</a></small>
+          </form>
+
+          <div style="margin-top:12px" aria-hidden="true">
+            <svg width="100%" height="80" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1">
+                  <stop offset="0" stop-color="#7c5cff" stop-opacity="0.7" />
+                  <stop offset="1" stop-color="#ff6b6b" stop-opacity="0.7" />
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="200" height="80" rx="12" fill="url(#g)" opacity="0.08" />
+            </svg>
+          </div>
+        </aside>
+      </section>
+
+      <section id="services" style="margin-top:18px">
+        <div class="hero-card">
+          <h3>Bagaimana cara pesan?</h3>
+          <ol>
+            <li>Pilih game & paket.</li>
+            <li>Isi ID pemain dan email (opsional).</li>
+            <li>Tekan tombol <strong>Pesan via WhatsApp</strong> — kami akan konfirmasi dan proses.</li>
+          </ol>
+
+          <p class="small">Note: Contoh ini adalah front-end statis. Untuk proses top-up otomatis, integrasikan payment gateway & API game.</p>
+        </div>
+      </section>
+
+      <section style="margin-top:18px" class="contact" id="contact">
+        <div>
+          <h4 style="margin:0">Kontak</h4>
+          <p class="small" style="margin:6px 0">WhatsApp: <a href="https://wa.me/6289652853591?text=Halo%20CONDETMARKET" target="_blank" rel="noopener">+62 896-5285-3591</a></p>
+          <p class="small" style="margin:6px 0">Email: <a href="mailto:condetstore28@gmail.com">condetstore28@gmail.com</a></p>
+        </div>
+
+        <div class="links" aria-hidden="true">
+          <button class="btn" onclick="openFAQ()">FAQ</button>
+          <button class="btn" onclick="openTerms()">S&K</button>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> ADITMARKET — Semua hak dilindungi.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // small interactive behaviors
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function prefill(pkg, price){
+      const sel = document.getElementById('package');
+      for(const opt of sel.options){ if(opt.text.includes(pkg) || opt.value===price) { sel.value = opt.value; break; } }
+      updatePrice();
+      document.getElementById('username').focus();
+    }
+
+    function updatePrice(){
+      const sel = document.getElementById('package');
+      const price = sel.value ? Number(sel.value) : 0;
+      const el = document.getElementById('priceDesc');
+      el.textContent = price ? ('Total: Rp ' + price.toLocaleString('id-ID')) : 'Total: —';
+    }
+    document.getElementById('package').addEventListener('change', updatePrice);
+
+    function handleOrder(e){
+      e.preventDefault();
+      const game = document.getElementById('game').value;
+      const username = document.getElementById('username').value.trim();
+      const pkg = document.getElementById('package').value;
+      const email = document.getElementById('contact').value.trim();
+
+      if(!game || !username || !pkg){
+        alert('Mohon isi semua field yang wajib.');
+        return false;
+      }
+
+      // Build message for WhatsApp
+      const waNumber = '6289652853591';
+      const msg = `Halo ADITMARKET,%0ASaya mau order top-up.%0AGame: ${encodeURIComponent(game)}%0AID: ${encodeURIComponent(username)}%0APaket: Rp ${encodeURIComponent(Number(pkg).toLocaleString('id-ID'))}%0AEmail: ${encodeURIComponent(email || '-')}`;
+      const url = `https://wa.me/${waNumber}?text=${msg}`;
+      window.open(url,'_blank');
+      return false;
+    }
+
+    // small modals (placeholder)
+    function openFAQ(){ alert('FAQ:\n1) Proses top-up 5-30 menit.\n2) Hubungi WA untuk komplain.'); }
+    function openTerms(){ alert('S&K singkat:\nTransaksi non-refundable kecuali kesepakatan.'); }
+
+    // keyboard shortcut: press 'o' to focus order form
+    document.addEventListener('keydown', (e)=>{ if(e.key==='o' || e.key==='O'){ document.getElementById('username').focus(); } });
+  </script>
+</body>
+</html>
